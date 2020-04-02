@@ -4,7 +4,7 @@ LiquidCrystal LCD(2,3,4,5,6,7); // naming that LCD
 int TrigPin=12; // integer for Trig pin
 int EchoPin=11; // integer for echo pin
 int ReqTime; // Float time for Requare time to travel sound
-float Velocity=1422.08; // Float Integer for Velosity of sound
+float Velocity=1422.08; // Float Integer for Velosity of sound in Km/hr
 float distance; // Distance take in Inchi
 
 void setup(){
@@ -28,26 +28,16 @@ void loop(){
 
   ReqTime= pulseIn(EchoPin,HIGH); // reading the requre time to sound traveling
 
-  /*Serial.println(ReqTime); // printing Requre time in Serial monitor
-  LCD.setCursor(0,0); // where the print will start in LCD
-  LCD.print("Time Requred"); // this will print in 1st row
-  LCD.setCursor(0,1);
-  LCD.print(ReqTime);// printing Requre time of Sound to travel on LCD
-  LCD.print(" Micro-Sec"); // Printing Micro-Sec in LCD
-  
-  delay(3000); // delay for One minute 
-
-  LCD.clear(); // Clearing LCD dispaly
-*/
-  distance = (Velocity*ReqTime)/(2.54*10*60*60*2); // Calculating Velocity in km/hr
+ 
+  distance = (Velocity*ReqTime)/(2.54*10*60*60*2); // Calculating distance in inch
 
   LCD.setCursor(0,0);
   LCD.print("Distance is ="); // message 
   LCD.setCursor(0,1);
-  LCD.print(distance); // Printing Velocity in LCD
+  LCD.print(distance); // Printing distance in LCD
   LCD.print("Inch"); // Message
 
-  delay(200); // delay for 5 seconds
+  delay(200); // delay for 0.2 seconds
 
   
 }
